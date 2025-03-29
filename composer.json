@@ -1,0 +1,17 @@
+{
+  "name": "zeus/facade",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "zeus",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Zeus\\Facade\\": "src/"
+    }
+  }
+}
