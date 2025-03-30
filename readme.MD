@@ -1,4 +1,11 @@
 ### Facade and container 
+An advanced container and facade architecture, The aim is to automatically bind dependency injections.
+
+to install
+
+```console
+composer require zeus/facade
+```
 
 
 The short code for the using of the following
@@ -29,3 +36,4 @@ $container->bind('login', LoginController::class);
 
 echo Login::login('john_doe', 'password123') . PHP_EOL; // "Login successful for john_doe at 2025-03-28 14:30:45"
 ```
+

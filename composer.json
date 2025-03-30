@@ -1,6 +1,6 @@
 {
   "name": "zeus/facade",
-  "description": "description",
+  "description": "the facade and container",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
