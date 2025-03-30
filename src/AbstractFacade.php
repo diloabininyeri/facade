@@ -29,6 +29,7 @@ abstract class AbstractFacade
     }
 
     /**
+     * @noinspection PhpUnused
      * @return Container|null
      */
     public static function getContainer(): ?Container
@@ -106,6 +107,52 @@ abstract class AbstractFacade
     public static function fake(string $method,Closure $callback): void
     {
         static::$fakes[static::class][$method] = $callback;
+    }
+
+    /**
+     * @noinspection PhpUnused
+     * @param string $method
+     * @return bool
+     */
+    public function hasFake(string $method): bool
+    {
+        return isset(static::$fakes[static::class][$method]);
+    }
+    /***
+     * @noinspection PhpUnused
+     * @return bool
+     */
+    public function hasMiddleware():bool
+    {
+        return isset(static::$middlewares[static::class]);
+    }
+
+    /***
+     * @noinspection PhpUnused
+     * @return void
+     */
+    public function removeMiddleware(): void
+    {
+        unset(static::$middlewares[static::class]);
+    }
+
+    /***
+     * @param string|array|null $method
+     * @return void
+     */
+    public static function clearFake(null|string|array $method=null): void
+    {
+        if ($method === null) {
+            unset(static::$fakes[static::class]);
+            return;
+        }
+        if (is_array($method)) {
+            foreach ($method as $m) {
+                static::clearFake($m);
+            }
+            return;
+        }
+        unset(static::$fakes[static::class][$method]);
     }
     /**
      * @return string

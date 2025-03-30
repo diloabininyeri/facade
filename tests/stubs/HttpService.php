@@ -10,4 +10,9 @@ class HttpService
     {
         return $url;
     }
+
+    public function post(string $url): string
+    {
+        return $url;
+    }
 }

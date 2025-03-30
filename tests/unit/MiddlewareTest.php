@@ -27,10 +27,12 @@ class MiddlewareTest extends TestCase
 
         Http::middleware(static function (string $method,array &$parameters,\Closure $next){
 
-            $parameters[0]='https://diloabininyeri.com';
+            if ('post' === $method) {
+                $parameters[0] = 'https://diloabininyeri.com';
+            }
             return $next($method, $parameters);
         });
 
-        $this->assertEquals('https://diloabininyeri.com',Http::get('http://localhost'));
+        $this->assertEquals('https://diloabininyeri.com',Http::post('http://localhost'));
     }
 }
