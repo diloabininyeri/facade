@@ -36,4 +36,22 @@ $container->bind('login', LoginController::class);
 
 echo Login::login('john_doe', 'password123') . PHP_EOL; // "Login successful for john_doe at 2025-03-28 14:30:45"
 ```
+The fake
+```php
+
+use \Zeus\Facade\Tests\stubs\Http;
+
+Http::fake('get',function (){
+    return 'fake';
+})
+
+echo Http::get(); //fake
+```
+or middleware 
+```php
+
+Http::middleware(function (string $method,array $parameters,Closure $next){
+    return $next($method,$parameters);
+});
+```
 
